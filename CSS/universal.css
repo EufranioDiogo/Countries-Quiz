@@ -1,0 +1,19 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-image: url('../IMG/background.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100vh;
+    background-size: cover;
+    height: 100vh;
+}
+:root{
+    --options-text-color: #6066d0cc;
+    --question-text-color: #2F527B;
+    --win-color: #60BF88;
+    --lose-color: #EA8282;
+    --btn-color-clicking: #F9A826;
+    --main-conteiner-color: #fff;
+}

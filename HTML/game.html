@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/universal.css">
+    <link rel="stylesheet" href="../CSS/flags-game.css">
+    <title>Country Quiz - Flags</title>
+</head>
+
+<body>
+    <div class="main-conteiner">
+        <h1 id="title" class="game-name">Country Quiz</h1>
+        <img class="guy-image" src="../IMG/undraw_adventure_4hum 1.svg" alt="Guy in Adventure">
+
+        <div class="game-control">
+            <div class="question">
+                <img v-if="isFlagQuestion" :src="flagImg" class="flag" alt="country flag">
+                <p v-if="isFlagQuestion" class="question-text">Which country does this flag belong to?</p>
+                <p v-else class="question-text">{{ capitalName }} is the capital of which country?</p>
+            </div>
+            <div class="answer-options">
+                <button v-for="(index, i) in answerOptions" class="answer-option" @click="analiseChoice(index, i)"><span class="line">{{ line[i] }}</span><span class="country-name">{{ results[index].name }}</span> </button>
+            </div>
+        </div>
+        <div class="main-controller">
+            <p class="corrects">{{ correctAnswers }}</p>
+            <p class="wrongs">{{ wrongAnswers }}</p>
+            <button class="btn-exit">Exit</button>
+        </div>
+    </div>
+
+    <script src="../JS/game.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../CSS/universal.css">
+    <link rel="stylesheet" href="../CSS/results.css">
+    <title>Result</title>
+</head>
+
+<body>
+    <div class="main-conteiner">
+        <img :src="imgURL" alt="">
+        <p class="">You got <strong class="corrects">{{ corrects }} corrects</strong>, <strong class="wrongs">{{ wrongs }} wrongs</strong>.</p>
+        <p v-if="rate >= 0.9" class="recomendation very-nice">You're doing very well keep doing this.</p>
+        <p v-else-if="rate >= 0.75" class="recomendation good">Hey! You're ok but keep praticiping and studying.</p>
+        <p v-else-if="rate >= 0.60" class="recomendation not-so-good">You need to study more about this topic.</p>
+        <p v-else class="recomendation bad">You really need to study more if do you want to know more about
+            countries.</p>
+        <p class="rate">{{ rate * 100 }} % </p>
+        <button class="try-again">
+            Try Again
+        </button>
+    </div>
+    <script>
+        let app = new Vue({
+            el: '.main-conteiner',
+            data: {
+                imgURL: '',
+                corrects: 0,
+                wrongs: 0,
+                rate: 0
+            }
+        })
+
+        var userDate = window.location.toString()
+        userDate = userDate.split('?')[1];
+        userDate = userDate.split('&');
+        dataObject = {}
+
+        userDate.forEach(el => {
+            data = el.split('=');
+
+            dataObject[data[0]] = parseInt(data[1]);
+        })
+
+        app.corrects = dataObject.corrects;
+        app.wrongs = dataObject.wrongs;
+        app.rate = (app.corrects / (app.corrects + app.wrongs)).toFixed(2)
+        if(app.rate >= 0.75){
+            app.imgURL = '../IMG/undraw_winners_ao2o 2.svg'
+        } else {
+            app.imgURL = '../IMG/undraw_studying_s3l7.svg'
+        }
+        document.querySelector('.try-again').addEventListener('click', ()=>{
+            window.location.assign('../index.html')
+        })
+    </script>
+</body>
+
+</html>

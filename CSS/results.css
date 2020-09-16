@@ -1,0 +1,72 @@
+@media only screen and (max-width: 1750px){
+
+    .main-conteiner{
+        width: 45%;
+        position: relative;
+        margin: 0 auto;
+        top: 50%;
+        transform: translateY(-50%);
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        padding: 10px;
+    }
+    .main-conteiner img {
+        width: 50%;
+        position: relative;
+        margin-top: 30px auto;
+    }
+    .main-conteiner p {
+        text-align: center;
+        font-family: Poppins, sans-serif;
+        font-size: 25px;
+        color: #1f1f1f;
+    }
+    .corrects{
+        color: #00db71;
+    }
+    .wrongs{
+        color: #db3e00;
+    }
+    .rate{
+        font-weight: 900;
+        font-size: 30px;
+        margin: 20px 0;
+    }
+    .very-nice{
+        color: #00d5ff;
+    }
+    .good{
+        color: #ffbb00;
+    }
+    .not-so-good{
+        color: #131313;
+    }
+    .bad{
+        color: #cf0000;
+    }
+    .try-again{
+        border: none;
+        font-family: Poppins, sans-serif;
+        font-size: 25px;
+        background-color: #00b3ffd0;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+        padding: 10px 20px;
+        margin-bottom: 20px;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .try-again:hover{
+        background-color: #00b3ff;
+    }
+}
+
+@media only screen and (max-width: 750px){
+    .main-conteiner{
+        width: 70%;
+    }
+}

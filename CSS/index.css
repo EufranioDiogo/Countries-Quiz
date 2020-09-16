@@ -1,0 +1,79 @@
+@media only screen and (max-width: 1750px){
+    .main-conteiner{
+        background-color: var(--main-conteiner-color);
+        border-radius: 10px;
+        position: relative;
+        width: 42%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .guy-image{
+        position: absolute;
+        right: 0;
+        top: -15%;
+    }
+    .control-panel{
+        position: relative;
+        margin: 80px auto;
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+    .control-panel .control-panel-btn{
+        border: 2px solid rgba(221, 221, 221, 0.311);
+        margin: 15px 0;
+        width: 100%;
+        text-align: center;
+        font-family: Poppins;
+        font-size: 18px;
+        font-weight: 600;
+        color: #222222;
+        background-color: #fff;
+        padding: 10px 0;
+        cursor: pointer;
+        border-radius: 20px;
+        transition: 0.5s;
+    }
+    .control-panel-btn:nth-child(1){
+        margin-top: 0 !important;
+    }
+    .control-panel-btn:nth-child(4){
+        margin-bottom: 40px !important;
+    }
+    .control-panel-btn:hover{
+        background-color: #ddd;
+    }
+    .exit{
+        background-color: #fff !important;
+        color: #db0000 !important;
+        border: 2px solid #db0000 !important;
+    }
+    .exit:hover{
+        background-color: #db0000 !important;
+        color: #fff !important;
+    }
+    .game-name{
+        font-family: Poppins, sans-serif;
+        margin-left: 5%;
+        color: var(--btn-color-clicking);
+    }
+}
+
+@media only screen and (max-width: 750px){
+    .main-conteiner{
+        width: 90%;
+        margin-top: 10px;
+    }
+    .main-conteiner img{
+        position: relative;
+        top: 0;
+        margin: 0 auto;
+        display: block;
+        margin-top: 25px;
+    }
+    .control-panel{
+        width: 90%;
+        margin-top: 25px;
+    }
+}
