@@ -1,6 +1,6 @@
 <!-- Please update value in the {}  -->
 
-<h1 align="center"><a href="https://eufraniodiogo.github.io/Rock-Paper-Scissor">Countries Quiz</a></h1>
+<h1 align="center"><a href="https://eufraniodiogo.github.io/Countries-Quiz">Countries Quiz</a></h1>
 <div align="center">
   <h3>
     <a href="https://eufraniodiogo.github.io/Countries-Quiz">
@@ -24,7 +24,11 @@
 
 ## Overview
 
-![screenshot1](imgs)
+![screenshot1](../country-quiz-master/IMG/Screenshot%201.png)
+![screenshot2](../country-quiz-master/IMG/Screenshot%202.png)
+![screenshot3](../country-quiz-master/IMG/Screenshot%203.png)
+![screenshot4](../country-quiz-master/IMG/Screenshot%204.png)
+![screenshot5](../country-quiz-master/IMG/Screenshot%205.png)
 
 - Where can I see your demo?<br>
   [Here](https://eufraniodiogo.github.io/Countries-Quiz)
