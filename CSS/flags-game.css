@@ -41,6 +41,7 @@
         font-family: Poppins, sans-serif;
         display: flex;
         flex-direction: column;
+        height: 150px;
     }
     
     .question .flag {
@@ -63,6 +64,7 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        margin-top: 30px;
     }
     
     .answer-options .answer-option {
