@@ -24,11 +24,11 @@
 
 ## Overview
 
-![screenshot1](../country-quiz-master/IMG/Screenshot%201.png)
-![screenshot2](../country-quiz-master/IMG/Screenshot%202.png)
-![screenshot3](../country-quiz-master/IMG/Screenshot%203.png)
-![screenshot4](../country-quiz-master/IMG/Screenshot%204.png)
-![screenshot5](../country-quiz-master/IMG/Screenshot%205.png)
+![screenshot1](IMG/Screenshot1.png)
+![screenshot2](IMG/Screenshot2.png)
+![screenshot3](IMG/Screenshot3.png)
+![screenshot4](IMG/Screenshot4.png)
+![screenshot5](IMG/Screenshot5.png)
 
 - Where can I see your demo?<br>
   [Here](https://eufraniodiogo.github.io/Countries-Quiz)
