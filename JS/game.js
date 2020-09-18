@@ -4,6 +4,9 @@ let playMode = parseInt(window.location.href.split('?')[1].split('=')[1])
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+function getRandomArbitrary(min, max) {
+    return parseInt(Math.random() * (max - min) + min);
+}
 
 
 let app = new Vue({
@@ -57,34 +60,30 @@ let app = new Vue({
             }
         },
         generateOptions() {
-            let options = []
-            let indexsSelected = []
+            let options = [];
+            let correctAnswerIndex = getRandomArbitrary(0, app.results.length);
+            let limit = app.results.length > 4 ? 4 : app.results.length
+            let insertionIndexOfCorrectAnswer = getRandomArbitrary(0, limit)
 
-            app.correctAnswerIndex = Math.floor(Math.random() * (app.results.length + 1));
-
-            let index = null;
-            let isIndexIn = false;
-            let correctIndexTimeToInsert = Math.floor(Math.random() * (3 - 0 + 1))
-
-            while (options.length < 4) {
-                index = Math.floor(Math.random() * (app.results.length - 0 + 1));
-                isIndexIn = false;
-
-                if (options.length == correctIndexTimeToInsert) {
-                    options.push(app.correctAnswerIndex)
-                    indexsSelected.push(app.correctAnswerIndex)
+            while(options.length < limit){
+                if(options.length == insertionIndexOfCorrectAnswer){
+                    options.push(correctAnswerIndex)
                 } else {
-                    for (let i = 0; i < indexsSelected.length; i++) {
-                        if (indexsSelected[i] == index) {
-                            isIndexIn = true;
+                    let index = getRandomArbitrary(0, app.results.length)
+                    let isOptionInTheList = false
+                    console.log(index)
+                    for(let i = 0; i < options.length; i++){
+                        if(index == options[i] || index == correctAnswerIndex){
+                            isOptionInTheList = true
+                            break
                         }
                     }
-                    if (!isIndexIn) {
+                    if(!isOptionInTheList){
                         options.push(index)
-                        indexsSelected.push(index)
                     }
                 }
             }
+            app.correctAnswerIndex = correctAnswerIndex
             return options;
         },
         analiseChoice(index, i = null) {
@@ -104,7 +103,14 @@ let app = new Vue({
                 document.querySelectorAll('.answer-option')[app.answerOptions.indexOf(app.correctAnswerIndex)].style.color = '#1f1f1f';
                 document.querySelectorAll('.answer-option')[app.answerOptions.indexOf(app.correctAnswerIndex)].style.backgroundColor = '#FFF';
 
-                app.results = app.results.slice(0, app.correctAnswerIndex).concat(app.results.slice(app.correctAnswerIndex + 1))
+                let auxArray = []
+
+                for (let i = 0; i < app.results.length; i++) {
+                    if (i != app.correctAnswerIndex) {
+                        auxArray.push(app.results[i])
+                    }
+                }
+                app.results = auxArray;
                 app.generateQuestion();
             }, 2000)
         },
@@ -123,23 +129,24 @@ let app = new Vue({
 
                 document.querySelectorAll('.answer-option')[app.answerOptions.indexOf(app.correctAnswerIndex)].style.color = '#1f1f1f';
                 document.querySelectorAll('.answer-option')[app.answerOptions.indexOf(app.correctAnswerIndex)].style.backgroundColor = '#FFF';
+                app.results = app.results
                 app.generateQuestion();
             }, 2000)
         }
     },
-
-
-
-
-
-
-})
-
-fetch('https://restcountries.eu/rest/v2/all').then(response => response.json()).then(data => {
-    app.results = data;
-    app.generateQuestion()
 })
 
 document.querySelector('.btn-exit').addEventListener('click', () => {
     window.location.assign(`result.html?corrects=${app.correctAnswers}&wrongs=${app.wrongAnswers}&mode=${playMode}`)
 })
+
+document.querySelector('.end-of-game button').addEventListener('click', ()=>{
+    window.location.assign('../index.html')
+})
+
+fetch('https://restcountries.eu/rest/v2/all').then(response => response.json()).then(data => {
+    app.results = data;
+    console.log(app.results)
+    app.generateQuestion()
+})
+

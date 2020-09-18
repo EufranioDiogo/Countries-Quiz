@@ -15,11 +15,17 @@
     <div class="main-conteiner">
         <img :src="imgURL" alt="">
         <p class="">You got <strong class="corrects">{{ corrects }} corrects</strong>, <strong class="wrongs">{{ wrongs }} wrongs</strong>.</p>
-        <p v-if="rate >= 0.9" class="recomendation very-nice">You're doing very well keep doing this.</p>
-        <p v-else-if="rate >= 0.75" class="recomendation good">Hey! You're ok but keep praticiping and studying.</p>
-        <p v-else-if="rate >= 0.60" class="recomendation not-so-good">You need to study more about this topic.</p>
-        <p v-else class="recomendation bad">You really need to study more if do you want to know more about
+        
+        <p v-if="rate < 0.5" class="recomendation bad">You really need to study, it's bad :(</p>
+        <p v-else-if="rate < 0.6" class="recomendation bad">You really need to study more if do you want to know more about
             countries.</p>
+        <p v-else-if="rate < 0.7" class="recomendation not-so-good">You need to study more about this topic, but you're above 50% and it's also good.</p>
+        <p v-else-if="rate < 0.8" class="recomendation good">Hey! You're ok but keep praticiping and studying, to get better on this! :)</p>
+        <p v-else-if="rate < 0.9" class="recomendation very-nice">You're doing very well keep doing this.</p>
+        <p v-else class="recomendation very-nice">You're the one! Congrats, you're awesome.</p>
+        
+        
+        
         <p class="rate">{{ rate * 100 }} % </p>
         <button class="try-again">
             Try Again
@@ -36,21 +42,21 @@
             }
         })
 
-        var userDate = window.location.toString()
-        userDate = userDate.split('?')[1];
-        userDate = userDate.split('&');
+        var userData = window.location.toString()
+        userData = userData.split('?')[1];
+        userData = userData.split('&');
         dataObject = {}
 
-        userDate.forEach(el => {
+        userData.forEach(el => {
             data = el.split('=');
 
             dataObject[data[0]] = parseInt(data[1]);
         })
 
-        app.corrects = dataObject.corrects;
-        app.wrongs = dataObject.wrongs;
+        app.corrects = parseInt(dataObject.corrects);
+        app.wrongs = parseInt(dataObject.wrongs);
         app.rate = (app.corrects / (app.corrects + app.wrongs)).toFixed(2)
-        if(app.rate >= 0.75){
+        if(app.rate >= 0.70){
             app.imgURL = '../IMG/undraw_winners_ao2o 2.svg'
         } else {
             app.imgURL = '../IMG/undraw_studying_s3l7.svg'

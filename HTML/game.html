@@ -18,12 +18,17 @@
 
         <div class="game-control">
             <div class="question">
-                <img v-if="isFlagQuestion" :src="flagImg" class="flag" alt="country flag">
-                <p v-if="isFlagQuestion" class="question-text">Which country does this flag belong to?</p>
+                <img v-if="isFlagQuestion && results.length" :src="flagImg" class="flag" alt="country flag">
+                <p v-if="isFlagQuestion && results.length" class="question-text">Which country does this flag belong to?</p>
                 <p v-else class="question-text">{{ capitalName }} is the capital of which country?</p>
             </div>
-            <div class="answer-options">
+            <div class="answer-options" v-if="results.length">
                 <button v-for="(index, i) in answerOptions" class="answer-option" @click="analiseChoice(index, i)"><span class="line">{{ line[i] }}</span><span class="country-name">{{ results[index].name }}</span> </button>
+            </div>
+            <div class="end-of-game" v-else>
+                <p>Thanks to use our app!</p>
+                <p>You did a very good work finishing the game!</p>
+                <button>Go back home</button>
             </div>
         </div>
         <div class="main-controller">

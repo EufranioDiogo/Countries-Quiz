@@ -30,6 +30,9 @@
     .wrongs{
         color: #db3e00;
     }
+    .recomendation{
+        margin-top: 10px;
+    }
     .rate{
         font-weight: 900;
         font-size: 30px;

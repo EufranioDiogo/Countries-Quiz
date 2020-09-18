@@ -75,6 +75,12 @@
         display: flex;
         justify-content: space-between;
         cursor: pointer;
+        font-weight: 900;
+        transition: 0.5s;
+        background-color: #fff;
+    }
+    .answer-option:hover{
+        border: 1px solid #f7b500 !important;
     }
     
     .answer-options .answer-option .country-name {
@@ -138,6 +144,25 @@
     }
     .btn-exit:hover{
         background-color: #e92300ef;
+    }
+    .end-of-game{
+        font-size: 2.5rem;
+        font-family: Poppins, sans-serif;
+        text-align: center;
+        color: #00d6f7;
+    }
+    .end-of-game button{
+        border: none;
+        padding: 10px 20px;
+        background-color: #1f1f1fe3;
+        color: #fff;
+        font-size: 15px;
+        border-radius: 5px;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+    .end-of-game button:hover{
+        background-color: #1f1f1f;
     }
 }
 @media only screen and (max-width: 750px){
