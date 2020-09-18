@@ -6,7 +6,6 @@ function sleep(ms) {
 }
 
 
-
 let app = new Vue({
     el: '.main-conteiner',
     data: {
