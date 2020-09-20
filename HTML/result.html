@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://kit.fontawesome.com/5c7edfd842.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../CSS/universal.css">
     <link rel="stylesheet" href="../CSS/results.css">
@@ -27,9 +28,16 @@
         
         
         <p class="rate">{{ rate * 100 }} % </p>
-        <button class="try-again">
-            Try Again
-        </button>
+        <div class="button-panel">
+            <button class="try-again">
+                <i class="fas fa-sync-alt"></i>
+                Try Again
+            </button>
+            <button class="go-home">
+                Go Home
+                <i class="fas fa-door-open"></i>
+            </button>
+        </div>
     </div>
     <script>
         let app = new Vue({
@@ -62,7 +70,10 @@
             app.imgURL = '../IMG/undraw_studying_s3l7.svg'
         }
         document.querySelector('.try-again').addEventListener('click', ()=>{
-            window.location.assign('../index.html')
+            window.location.assign(`game.html?playMode=${dataObject.mode}`)
+        })
+        document.querySelector('.go-home').addEventListener('click', ()=>{
+            window.location.assign(`../index.html`)
         })
     </script>
 </body>

@@ -50,21 +50,36 @@
     .bad{
         color: #cf0000;
     }
-    .try-again{
+    .button-panel{
+        display: flex;
+        margin-top: 2rem;
+        width: 80%;
+        position: relative;
+        justify-content: space-between;
+    }
+    .button-panel button{
         border: none;
         font-family: Poppins, sans-serif;
         font-size: 25px;
-        background-color: #00b3ffd0;
         color: #fff;
         text-align: center;
-        border-radius: 10px;
+        border-radius: 5px;
         padding: 10px 20px;
         margin-bottom: 20px;
         cursor: pointer;
         transition: 0.5s;
     }
+    .try-again{
+        background-color: #00b3ffd0;
+    }
+    .go-home{
+        background-color: #1f1f1fd0;
+    }
     .try-again:hover{
         background-color: #00b3ff;
+    }
+    .go-home:hover{
+        background-color: #1f1f1f;
     }
 }
 
