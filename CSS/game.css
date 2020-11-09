@@ -60,6 +60,24 @@
         font-weight: 700;
     }
     
+    .panel-control{
+        margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: center;
+    }
+    .panel-control i {
+        color: #1f1f1f;
+        font-size: 1.5rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: #15151512;
+        margin: 0 0.5rem;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .panel-control i:hover{
+        background-color: #15151548;
+    }
     .answer-options {
         display: flex;
         flex-direction: column;

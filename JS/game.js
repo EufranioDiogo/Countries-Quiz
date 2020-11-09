@@ -23,6 +23,8 @@ let app = new Vue({
         line: ['A', 'B', 'C', 'D'],
         isFlagQuestion: false,
         capitalName: '',
+        alreadySkip: false,
+        alreadyMakeItEasy: false
     },
     methods: {
         generateQuestion() {
@@ -65,20 +67,20 @@ let app = new Vue({
             let limit = app.results.length > 4 ? 4 : app.results.length
             let insertionIndexOfCorrectAnswer = getRandomArbitrary(0, limit)
 
-            while(options.length < limit){
-                if(options.length == insertionIndexOfCorrectAnswer){
+            while (options.length < limit) {
+                if (options.length == insertionIndexOfCorrectAnswer) {
                     options.push(correctAnswerIndex)
                 } else {
                     let index = getRandomArbitrary(0, app.results.length)
                     let isOptionInTheList = false
                     console.log(index)
-                    for(let i = 0; i < options.length; i++){
-                        if(index == options[i] || index == correctAnswerIndex){
+                    for (let i = 0; i < options.length; i++) {
+                        if (index == options[i] || index == correctAnswerIndex) {
                             isOptionInTheList = true
                             break
                         }
                     }
-                    if(!isOptionInTheList){
+                    if (!isOptionInTheList) {
                         options.push(index)
                     }
                 }
@@ -87,6 +89,15 @@ let app = new Vue({
             return options;
         },
         analiseChoice(index, i = null) {
+            if (app.alreadyMakeItEasy) {
+                let options = document.querySelectorAll('.answer-option');
+
+                for (let i = 0; i < options.length; i++) {
+                    options[i].style.backgroundColor = '#fff'
+                    options[i].disabled = false;
+                }
+            }
+
             if (index == app.correctAnswerIndex) {
                 app.correctAnswer()
             } else {
@@ -132,6 +143,36 @@ let app = new Vue({
                 app.results = app.results
                 app.generateQuestion();
             }, 2000)
+        },
+        skipQuestion() {
+            if (!app.alreadySkip) {
+                app.generateQuestion();
+                app.alreadySkip = true;
+                document.querySelector('.btn-skip').style.backgroundColor = '#1515155e'
+                document.querySelector('.btn-skip').disabled = true;
+            }
+        },
+        makeItEasy() {
+            if (!app.alreadyMakeItEasy) {
+                let options = document.querySelectorAll('.answer-option');
+                let correctOptionIndex = app.answerOptions.indexOf(app.correctAnswerIndex)
+                let limit = app.results.length > 4 ? 4 : app.results.length
+                let potentialCorrectAnswer = correctOptionIndex;
+
+                while (potentialCorrectAnswer == correctOptionIndex) {
+                    potentialCorrectAnswer = getRandomArbitrary(0, limit)
+                }
+
+                for (let i = 0; i < options.length; i++) {
+                    if (i != correctOptionIndex && i != potentialCorrectAnswer) {
+                        options[i].style.backgroundColor = '#ddd'
+                        options[i].disabled = true;
+                    }
+                }
+                app.alreadyMakeItEasy = true;
+                document.querySelector('.btn-replay').style.backgroundColor = '#1515155e'
+                document.querySelector('.btn-replay').disabled = true;
+            }
         }
     },
 })
@@ -140,13 +181,12 @@ document.querySelector('.btn-exit').addEventListener('click', () => {
     window.location.assign(`result.html?corrects=${app.correctAnswers}&wrongs=${app.wrongAnswers}&mode=${playMode}`)
 })
 
-document.querySelector('.end-of-game button').addEventListener('click', ()=>{
+document.querySelector('.end-of-game button').addEventListener('click', () => {
     window.location.assign('../index.html')
 })
 
 fetch('https://restcountries.eu/rest/v2/all').then(response => response.json()).then(data => {
     app.results = data;
-    console.log(app.results)
     app.generateQuestion()
 })
 
