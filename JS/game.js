@@ -44,6 +44,10 @@ let app = new Vue({
 
             app.flagImg = app.results[app.correctAnswerIndex].flag;
             app.answerOptions = options;
+            
+            if (app.flagImg.trim() == '') {
+                app.generateCapitalQuestion();
+            }
         },
         generateCapitalQuestion() {
             app.isFlagQuestion = false;
@@ -53,12 +57,16 @@ let app = new Vue({
 
             app.capitalName = app.results[app.correctAnswerIndex].capital;
             app.answerOptions = options;
+
+            if (app.capitalName.trim() == '') {
+                app.generateCapitalQuestion();
+            }
         },
         generateFlagOrCapitalQuestion() {
             if (Math.floor(Math.random() * (1 + 1))) {
-                app.generateCapitalQuestion()
+                app.generateCapitalQuestion();
             } else {
-                app.generateFlagQuestion()
+                app.generateFlagQuestion();
             }
         },
         generateOptions() {
@@ -189,4 +197,3 @@ fetch('https://restcountries.eu/rest/v2/all').then(response => response.json()).
     app.results = data;
     app.generateQuestion()
 })
-

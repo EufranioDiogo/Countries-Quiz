@@ -14,6 +14,9 @@
 
 <body>
     <div class="main-conteiner">
+        <div class="preloader" :class="{ displaynone: results.length > 4 }">
+            <div class="circle-progress-bar"></div>
+        </div>
         <h1 id="title" class="game-name">Country Quiz</h1>
         <img class="guy-image" src="../IMG/undraw_adventure_4hum 1.svg" alt="Guy in Adventure">
 
