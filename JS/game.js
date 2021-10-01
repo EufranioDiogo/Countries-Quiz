@@ -81,7 +81,6 @@ let app = new Vue({
                 } else {
                     let index = getRandomArbitrary(0, app.results.length)
                     let isOptionInTheList = false
-                    console.log(index)
                     for (let i = 0; i < options.length; i++) {
                         if (index == options[i] || index == correctAnswerIndex) {
                             isOptionInTheList = true
