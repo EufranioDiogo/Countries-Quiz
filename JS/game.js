@@ -41,7 +41,6 @@ let app = new Vue({
 
             document.querySelector('.question-text').style.marginTop = '15px'
             let options = app.generateOptions()
-            console.log(options)
 
             app.flagImg = app.results[app.correctAnswerIndex].flags.svg;
 
@@ -195,7 +194,6 @@ document.querySelector('.end-of-game button').addEventListener('click', () => {
 })
 
 fetch('https://restcountries.com/v3.1/all').then(response => response.json()).then(data => {
-    console.log(data[0])
     app.results = data;
     app.generateQuestion()
 })
