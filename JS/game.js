@@ -41,8 +41,10 @@ let app = new Vue({
 
             document.querySelector('.question-text').style.marginTop = '15px'
             let options = app.generateOptions()
+            console.log(options)
 
-            app.flagImg = app.results[app.correctAnswerIndex].flag;
+            app.flagImg = app.results[app.correctAnswerIndex].flags.svg;
+
             app.answerOptions = options;
             
             if (app.flagImg.trim() == '') {
@@ -55,7 +57,7 @@ let app = new Vue({
             document.querySelector('.question-text').style.marginTop = '50px'
             let options = app.generateOptions()
 
-            app.capitalName = app.results[app.correctAnswerIndex].capital;
+            app.capitalName = app.results[app.correctAnswerIndex].capital[0];
             app.answerOptions = options;
 
             if (app.capitalName.trim() == '') {
@@ -192,7 +194,8 @@ document.querySelector('.end-of-game button').addEventListener('click', () => {
     window.location.assign('../index.html')
 })
 
-fetch('https://restcountries.eu/rest/v2/all').then(response => response.json()).then(data => {
+fetch('https://restcountries.com/v3.1/all').then(response => response.json()).then(data => {
+    console.log(data[0])
     app.results = data;
     app.generateQuestion()
 })
