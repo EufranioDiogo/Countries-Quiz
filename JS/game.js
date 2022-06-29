@@ -193,7 +193,7 @@ document.querySelector('.end-of-game button').addEventListener('click', () => {
     window.location.assign('../index.html')
 })
 
-fetch('https://restcountries.com/v3.1/all').then(response => response.json()).then(data => {
+fetch('https://restcountries.com/v3.1/all?fields=name,flags,capital').then(response => response.json()).then(data => {
     app.results = data;
     app.generateQuestion()
 })
